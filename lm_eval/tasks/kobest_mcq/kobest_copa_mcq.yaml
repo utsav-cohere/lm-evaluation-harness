@@ -1,0 +1,21 @@
+tag:
+  - kobest_mcq
+task: kobest_copa_mcq
+dataset_path: skt/kobest_v1
+dataset_name: copa
+training_split: train
+validation_split: validation
+output_type: multiple_choice
+test_split: test
+doc_to_text: "## Task\nGiven a premise, a question (which can ask for a cause or an effect) and 2 alternatives, decide the cause or effect of the premise from the two alternatives. A score of 0 indicates that the first alternative (Alternative 1) is a likely cause or effect for the premise based on the question. A score of 1 indicates that the second alternative (Alternative 2) is a likely cause or effect for the premise based on the question.\n\nPremise: {{premise}}\nQuestion: {{question}}\nAlternative 1: {{alternative_1}}\nAlternative 2: {{alternative_2}}\n\nRespond only with the number.\nAnswer:"
+doc_to_target: "{{label}}"
+doc_to_choice: [ '0','1' ]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: True
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: True
+metadata:
+  version: 1.0

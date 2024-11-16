@@ -1,0 +1,21 @@
+tag:
+  - kobest_mcq
+task: kobest_boolq_mcq
+dataset_path: skt/kobest_v1
+dataset_name: boolq
+training_split: train
+validation_split: validation
+output_type: multiple_choice
+test_split: test
+doc_to_text: "## Task\nGiven a context and a question, you need to classify whether the answer to the question is a Yes(1) or No(0)\n\nContext: {{paragraph}}\nQuestion: {{question}}\n\nRespond only with the number: 1 for Yes or 0 for No.\nAnswer:"
+doc_to_target: "{{label}}"
+doc_to_choice: [ '0','1' ]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: True
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: True
+metadata:
+  version: 1.0

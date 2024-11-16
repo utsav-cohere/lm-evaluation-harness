@@ -1,0 +1,21 @@
+tag:
+  - kobest_mcq
+task: kobest_sentineg_mcq
+dataset_path: skt/kobest_v1
+dataset_name: sentineg
+training_split: train
+validation_split: validation
+output_type: multiple_choice
+test_split: test
+doc_to_text: "## Task\nClassify the sentiment of the sentence given in Korean as being either Positive (1) or Negative (0)\n\nSentence: {{sentence}}\n\nRespond only with the number: 1 for Yes or 0 for No.\nAnswer:"
+doc_to_target: "{{label}}"
+doc_to_choice: [ '0','1' ]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: True
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: True
+metadata:
+  version: 1.0

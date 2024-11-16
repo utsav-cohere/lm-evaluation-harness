@@ -1,0 +1,21 @@
+tag:
+  - kobest_mcq
+task: kobest_hellaswag_mcq
+dataset_path: skt/kobest_v1
+dataset_name: hellaswag
+training_split: train
+validation_split: validation
+output_type: multiple_choice
+test_split: test
+doc_to_text: "## Task\nGiven a context and 4 possible sentence endings, select a correct sentence among the four candidates that is likely to appear after the given context. A label of 0 indicates that ending0 is the most likely, a label of 1 indicates that ending1 is the most likely, and so on.\n\nContext: {{context}}\nEnding0: {{ending_1}}\nEnding1: {{ending_2}}\nEnding2: {{ending_3}}\nEnding3: {{ending_4}}\n\nRespond only with the number.\nAnswer:"
+doc_to_target: "{{label}}"
+doc_to_choice: [ '0','1','2','3' ]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: True
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: True
+metadata:
+  version: 1.0

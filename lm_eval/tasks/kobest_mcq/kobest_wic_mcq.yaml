@@ -1,0 +1,21 @@
+tag:
+  - kobest_mcq
+task: kobest_wic_mcq
+dataset_path: skt/kobest_v1
+dataset_name: wic
+training_split: train
+validation_split: validation
+output_type: multiple_choice
+test_split: test
+doc_to_text: "##지침\n다음 질문에 예, 아니오 중에서 답변하세요. 그 외에는 아무것도 포함하지 않는 것을 엄수하십시오.\n\n##입력\n문장1:{{context_1}}\n문장2:{{context_2}}\n질문: 문장1과 문장2에서 쓰인 단어 [{{word}}]가 같은 뜻으로 쓰였나?\n"
+doc_to_target: "{{label}}"
+doc_to_choice: ['아니오', '예']
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: True
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: True
+metadata:
+  version: 1.0
