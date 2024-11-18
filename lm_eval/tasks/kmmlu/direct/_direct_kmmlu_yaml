@@ -1,27 +1,18 @@
 tag:
-    - kmmlu
-    - kmmlu_direct
+  - kmmlu
+  - kmmlu_direct
+task: kmmlu_direct
 dataset_path: HAERAE-HUB/KMMLU
-output_type: generate_until
+training_split: train
+validation_split: validation
+output_type: multiple_choice
 test_split: test
-fewshot_split: dev
 doc_to_text: "{{question.strip()}}\nA. {{A}}\nB. {{B}}\nC. {{C}}\nD. {{D}}\n정답："
 doc_to_target: "{{['A', 'B', 'C', 'D'][answer-1]}}"
+doc_to_choice: ['A', 'B', 'C', 'D']
 metric_list:
-  - metric: exact_match
+  - metric: acc
     aggregation: mean
-    higher_is_better: true
-    ignore_case: true
-    ignore_punctuation: true
-    regexes_to_ignore:
-          - " "
-generation_kwargs:
-  until:
-    - "Q:"
-    - "\n\n"
-    - "</s>"
-    - "."
-  do_sample: false
-  temperature: 0.0
+    higher_is_better: True
 metadata:
-  version: 2.0
+  version: 1.0
